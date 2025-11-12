@@ -2,7 +2,7 @@ package org.example.project.datasource
 
 import org.example.project.domain.Vehicle
 
-class VehicleImpl: Vehicle {
+class GasVehicle: Vehicle {
     override fun start(onStart: (String) -> Unit) {
         onStart("🚗 Vroom vroom")
     }
