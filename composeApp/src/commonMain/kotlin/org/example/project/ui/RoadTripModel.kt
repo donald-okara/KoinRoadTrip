@@ -33,6 +33,20 @@ class RoadTripModel(): ScreenModel {
 
             delay(1000)
 
+            vehicle.drive { sound ->
+                _uiState.update { state ->
+                    state.copy(checkPoints = state.checkPoints.plus(sound))
+                }
+            }
+
+            delay(1000)
+
+            vehicle.stop { sound ->
+                _uiState.update { state ->
+                    state.copy(checkPoints = state.checkPoints.plus(sound))
+                }
+            }
+
             _uiState.update {
                 it.copy(
                     checkPoints = it.checkPoints.plus("🏁: Destination arrived"),

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -38,34 +39,36 @@ fun RoadTripScreenContent(
     state: RoadTripState,
     onStart: () -> Unit
 ){
-    Column(
-        modifier = modifier
-            .padding(16.dp)
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top)
-    ) {
-        Button(
-            onClick = onStart,
-            enabled = !state.isUpdating,
-            modifier = Modifier.fillMaxWidth()
-        ){
-            Text("Start")
-        }
-
-        Text(
-            text = "Checkpoints"
-        )
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+    Scaffold{ innerPadding ->
+        Column(
+            modifier = modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top)
         ) {
-            items(state.checkPoints) {
-                Text(
-                    text = it,
-                    modifier = Modifier.animateItem()
-                )
+            Button(
+                onClick = onStart,
+                enabled = !state.isUpdating,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Start")
+            }
+
+            Text(
+                text = "Checkpoints"
+            )
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(state.checkPoints) {
+                    Text(
+                        text = it,
+                        modifier = Modifier.animateItem()
+                    )
+                }
             }
         }
     }
