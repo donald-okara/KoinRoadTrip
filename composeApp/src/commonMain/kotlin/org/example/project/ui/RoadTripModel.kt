@@ -8,10 +8,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.example.project.datasource.VehicleImpl
+import org.example.project.domain.Vehicle
 
-class RoadTripModel(): ScreenModel {
-    private val vehicle = VehicleImpl()
-
+class RoadTripModel(
+    private val vehicle: Vehicle
+): ScreenModel {
     private val _uiState = MutableStateFlow(RoadTripState())
     val uiState = _uiState.asStateFlow()
 

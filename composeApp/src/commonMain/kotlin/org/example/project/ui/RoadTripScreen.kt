@@ -19,11 +19,13 @@ import androidx.compose.ui.layout.LookaheadScope
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.koinScreenModel
 
 class RoadTripScreen: Screen {
     @Composable
     override fun Content() {
-        val screenModel = rememberScreenModel { RoadTripModel() }
+        val screenModel = koinScreenModel<RoadTripModel>()
+
         val state by screenModel.uiState.collectAsState()
 
         RoadTripScreenContent(
